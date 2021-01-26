@@ -147,37 +147,43 @@ public class WordGridService {
             case HORIZONTAL:
                 if(coordinate.y + word.length() >= gridSize) return false;
                 for (int i = 0; i < word.length(); i++) {
-                    if(grid[coordinate.x][coordinate.y + i] != '_') return false;
+                    char letter = grid[coordinate.x][coordinate.y + i];
+                    if(letter != '_' && letter != word.charAt(i) ) return false;
                 }
                 break;
             case VERTICAL:
                 if(coordinate.x + word.length() >= gridSize) return false;
                 for (int i = 0; i < word.length(); i++) {
-                    if(grid[coordinate.x+i][coordinate.y] != '_') return false;
+                    char letter = grid[coordinate.x+i][coordinate.y];
+                    if(letter != '_' && letter != word.charAt(i) ) return false;
                 }
                 break;
             case DIAGONAL:
                 if(coordinate.y + word.length() >= gridSize || coordinate.x + word.length() >= gridSize) return false;
                 for (int i = 0; i < word.length(); i++) {
-                    if(grid[coordinate.x + i][coordinate.y + i] != '_') return false;
+                    char letter = grid[coordinate.x + i][coordinate.y + i];
+                    if(letter != '_' && letter != word.charAt(i) ) return false;
                 }
                 break;
             case HORIZONTAL_INVERSE:
                 if(coordinate.y < word.length()) return false;
                 for (int i = 0; i < word.length(); i++) {
-                    if(grid[coordinate.x][coordinate.y - i] != '_') return false;
+                    char letter = grid[coordinate.x][coordinate.y - i];
+                    if(letter != '_' && letter != word.charAt(i) ) return false;
                 }
                 break;
             case VERTICAL_INVERSE:
                 if(coordinate.x < word.length() ) return false;
                 for (int i = 0; i < word.length(); i++) {
-                    if(grid[coordinate.x-i][coordinate.y] != '_') return false;
+                    char letter = grid[coordinate.x-i][coordinate.y];
+                    if(letter != '_' && letter != word.charAt(i) ) return false;
                 }
                 break;
             case DIAGONAL_INVERSE:
                 if(coordinate.y < word.length() || coordinate.x < word.length()) return false;
                 for (int i = 0; i < word.length(); i++) {
-                    if(grid[coordinate.x - i][coordinate.y - i] != '_') return false;
+                    char letter = grid[coordinate.x - i][coordinate.y - i];
+                    if(letter != '_' && letter != word.charAt(i) ) return false;
                 }
                 break;
 
