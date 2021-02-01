@@ -1,2 +1,2 @@
 # wordsearch-api
-Simple word search API implementation.
+Simple word search spring boot API implementation.
