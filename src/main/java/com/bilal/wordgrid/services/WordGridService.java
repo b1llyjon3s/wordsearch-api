@@ -42,12 +42,14 @@ public class WordGridService {
         //a list that holds all the coordinates - to be used in the fillGrid method.
         List<Coordinate> coordinates = new ArrayList<>();
         char[][] grid = new char[gridSize][gridSize];
+        //initialize the grid
         for (int i = 0; i < gridSize; i++) {
             for (int j = 0; j < gridSize; j++) {
                 coordinates.add(new Coordinate(i,j));
                 grid[i][j] = '_';
             }
         }
+        //generate the grid by iterating over the list of words
         for(String word: words) {
             if (word.length() >= gridSize || word.length() <= 2) continue;
             //random starting point
@@ -56,7 +58,7 @@ public class WordGridService {
             for (Coordinate coordinate : coordinates) {
                 int x = coordinate.x;
                 int y = coordinate.y;
-                //iterate through directions and find a suitable coordinate and direction
+                //iterate through directions and find a suitable direction for a given coord
                 Direction direction = fitDirection(grid, word, coordinate);
                 if(direction != null){
                     for (char c : word.toUpperCase().toCharArray()) {
@@ -81,10 +83,12 @@ public class WordGridService {
                                 break;
                         }
                     }
+                    //direction and coordinate found - thus move on to the next word
                     break;
                 }
             }
         }
+        //fill the empty ('_') slots with random letters
         randomFillGrid(grid);
         return grid;
     }
